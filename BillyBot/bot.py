@@ -8,9 +8,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 #Load token from environment variable
-load_dotenv()
+load_dotenv(dotenv_path='env')
 TOKEN = os.getenv('DISCORD_TOKEN')
-
 client = commands.Bot(command_prefix = '!')
 
 #Load Speedrun.com API
@@ -24,7 +23,7 @@ help_string = '''__**Commands:**__
 **!help:** Gives a list of commands.
 **!il (level):** Gives the current world record time for a specified level.
 **!misc:** Links to leaderboards and submission form for miscellaneous categories.
-**!moviegoer/!unmoviegoer:** Gives/Revokes the Moviegoers role.
+**!moviegoer(s)/!unmoviegoer(s):** Gives/Revokes the Moviegoers role.
 **!splits:** Links to the download for splits.
 **!tech (technique):** Gives information on a certain technique or lists all techniques if no args are provided.
 **!wr any%/all/100%:** Gives the current world record time for any%/all levels/100%.
@@ -207,9 +206,25 @@ async def moviegoer(ctx):
     await discord.Member.add_roles(member, role)
     await ctx.send("{} has entered the theater.".format(member.mention))
 
+#Gives moviegoers role
+@client.command()
+async def moviegoers(ctx):
+    member = ctx.author
+    role = discord.utils.get(member.guild.roles, name="Moviegoers")
+    await discord.Member.add_roles(member, role)
+    await ctx.send("{} has entered the theater.".format(member.mention))
+
 #Removes moviegoers role
 @client.command()
 async def unmoviegoer(ctx):
+    member = ctx.author
+    role = discord.utils.get(member.guild.roles, name="Moviegoers")
+    await discord.Member.remove_roles(member, role)
+    await ctx.send("{} has left the theater.".format(member.mention))
+
+#Removes moviegoers role
+@client.command()
+async def unmoviegoers(ctx):
     member = ctx.author
     role = discord.utils.get(member.guild.roles, name="Moviegoers")
     await discord.Member.remove_roles(member, role)
