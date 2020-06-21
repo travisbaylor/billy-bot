@@ -290,7 +290,7 @@ async def tech(ctx, *args):
         if arg in vals:
             await ctx.send(techniques["ricochet"]["edr"])
             return
-        vals = ["esedr", "egg shoot egg dash ricochet"]  #ESEDR
+        vals = ["esedr", "egg shoot egg dash ricochet", "pedr"]  #ESEDR
         if arg in vals:
             await ctx.send(techniques["ricochet"]["esedr"])
             return
