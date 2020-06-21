@@ -26,7 +26,7 @@ help_string = '''__**Commands:**__
 **!misc:** Links to leaderboards and submission form for miscellaneous categories.
 **!moviegoer/!unmoviegoer:** Gives/Revokes the Moviegoers role.
 **!splits:** Links to the download for splits.
-**!tech:** TODO
+**!tech (technique):** Gives information on a certain technique or lists all techniques if no args are provided.
 **!wr any%/all/100%:** Gives the current world record time for any%/all levels/100%.
 '''
 
