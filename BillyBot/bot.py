@@ -17,7 +17,7 @@ client = commands.Bot(command_prefix = '!')
 api = srcomapi.SpeedrunCom()
 game = (api.search(dt.Game, {"name": "billy hatcher and the giant egg"}))[0]
 
-###Edit list of help commands here
+#Edit list of help commands here
 client.remove_command('help')  #Override default help command
 help_string = '''__**Commands:**__
 **!docs:** Links to speedrunning documentation.
