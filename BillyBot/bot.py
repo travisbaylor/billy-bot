@@ -350,7 +350,7 @@ async def on_message(msg):
     if msg.content == "billy":
         await msg.channel.send("billy")
     else:
-        if (msg.channel.name == "bot-chat" or msg.channel.name == "#bot-chat"):
+        if msg.channel.type != discord.ChannelType.text or msg.channel.name == "bot-chat":
             await client.process_commands(msg)
 
 #Lazy error handler
