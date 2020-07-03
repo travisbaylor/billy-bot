@@ -369,9 +369,9 @@ async def on_message(msg):
                         times_of_postings[index][0] = times_of_postings[index][1]
                         await msg.channel.send("billy")
                     return
-                recent_billy_posters.append(msg.author.id)
-                times_of_postings.append(list((int(time.time()),0)))
-                await msg.channel.send("billy")
+            recent_billy_posters.append(msg.author.id)
+            times_of_postings.append(list((int(time.time()),0)))
+            await msg.channel.send("billy")
         else:
             await msg.channel.send("billy")
     else:
