@@ -1,4 +1,5 @@
 import datetime
+import time
 import discord
 import srcomapi, srcomapi.datatypes as dt
 import os
@@ -131,6 +132,18 @@ techniques = {
                                 "This also happens if after a fall you land with billy on the side of the egg where he would be after recovering. " +
                                 "This video doesn't do it: https://youtu.be/KJtf9JSvcd4?t=50 , this one does: https://youtu.be/b0WIJKwvrj0?t=41"
 }
+
+
+#Timer system for delaying spam of "billy" by a single user
+recent_billy_posters = []
+times_of_postings = []
+
+
+
+
+
+
+
 
 #Returns string with run info
 def get_time_string(ctx, category):
@@ -348,7 +361,19 @@ async def on_message(msg):
     if msg.author.id == client.user.id:
         return
     if msg.content == "billy":
-        await msg.channel.send("billy")
+        if msg.channel.type == discord.ChannelType.text:
+            for index in range(len(recent_billy_posters)):
+                if(msg.author.id == recent_billy_posters[index]):
+                    times_of_postings[index][1] = int(time.time())
+                    if times_of_postings[index][1]-times_of_postings[index][0] >= 30:
+                        times_of_postings[index][0] = times_of_postings[index][1]
+                        await msg.channel.send("billy")
+                    return
+            recent_billy_posters.append(msg.author.id)
+            times_of_postings.append(list((int(time.time()),0)))
+            await msg.channel.send("billy")
+        else:
+            await msg.channel.send("billy")
     else:
         if msg.channel.type != discord.ChannelType.text or msg.channel.name == "bot-chat":
             await client.process_commands(msg)
