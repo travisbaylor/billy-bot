@@ -361,22 +361,19 @@ async def on_message(msg):
     if msg.author.id == client.user.id:
         return
     if msg.content == "billy":
-		if msg.channel.type == discord.ChannelType.text:
-			found = False
-			for index in range(len(recent_billy_posters)):
-				if(msg.author.id == recent_billy_posters[index]):
-					found = True
-					times_of_postings[index][1] = int(time.time())
-					if times_of_postings[index][1]-times_of_postings[index][0] >= 30:
-						times_of_postings[index][0] = times_of_postings[index][1]
-						await msg.channel.send("billy")
-					return
-			if not found:
-				recent_billy_posters.append(msg.author.id)
-				times_of_postings.append(list((int(time.time()),0)))
-				await msg.channel.send("billy")
+        if msg.channel.type == discord.ChannelType.text:
+            for index in range(len(recent_billy_posters)):
+                if(msg.author.id == recent_billy_posters[index]):
+                    times_of_postings[index][1] = int(time.time())
+                    if times_of_postings[index][1]-times_of_postings[index][0] >= 30:
+                        times_of_postings[index][0] = times_of_postings[index][1]
+                        await msg.channel.send("billy")
+                    return
+                recent_billy_posters.append(msg.author.id)
+                times_of_postings.append(list((int(time.time()),0)))
+                await msg.channel.send("billy")
         else:
-			await msg.channel.send("billy")
+            await msg.channel.send("billy")
     else:
         if msg.channel.type != discord.ChannelType.text or msg.channel.name == "bot-chat":
             await client.process_commands(msg)
