@@ -107,7 +107,7 @@ techniques = {
                                 "The further egg must be larger than the egg you're going to clip with. " +
                                 "Shoot the larger egg, run around to the back of the smaller one, and jump. " +
                                 "Then, after jumping, hold the direction towards the wall and you should clip."
-                                "\n**Useful videos:** https://youtu.be/H6Ii_l08Y5U?t=60" +
+                                "\n**Useful videos:** https://youtu.be/H6Ii_l08Y5U?t=60 " +
                                 "Practice notes: I would learn the clip in 1-1. Egg KBCs are, in most people's opinion, easier than normal KBCs. " +
                                 "Because it requires two eggs, one of which is larger, it's usually used as more of a backup strat (especially in all levels). " +
                                 "1-1 is the real mainstream egg KBC, and 1-3 also has one that some people do in runs.",
